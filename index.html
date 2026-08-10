@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olawumi Elizabeth — AI Automation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2B1620;
+    --bg2:#20101A;
+    --bg3:#160A11;
+    --wine:#7A1F3D;
+    --blush:#E8A9C2;
+    --brown:#5A3A2E;
+    --gold:#D4AF37;
+    --gold-soft:#E8C868;
+    --silver:#B8B8B8;
+    --text:#F3E6EC;
+    --line:rgba(212,175,55,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:'Manrope',sans-serif; overflow-x:hidden;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px; margin:0 auto; padding-left:6vw; padding-right:6vw;}
+  section{position:relative;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:28px 6vw; position:sticky; top:0; z-index:50;
+    background:rgba(43,22,32,.72); backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled{border-bottom:1px solid var(--line);}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px; letter-spacing:-.01em;}
+  .nav-links{display:flex; gap:32px; font-size:13px; letter-spacing:.02em; color:var(--silver); align-items:center;}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-soft);}
+  .nav-cta{
+    background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px;
+    padding:10px 20px; border-radius:100px; text-decoration:none;
+  }
+  /* .nav-toggle{display:none;} */
+
+  /* ---------- HERO ---------- */
+  .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding:64px 6vw 100px;}
+  .eyebrow{display:inline-flex; gap:8px; align-items:center; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:26px;}
+  .eyebrow::before{content:"✦";}
+  h1{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(38px,4.6vw,60px); line-height:1.08;}
+  h1 .script{font-family:'Caveat',cursive; color:var(--blush); font-weight:700;}
+  .sub{margin-top:24px; font-size:16.5px; line-height:1.7; color:var(--silver); max-width:460px;}
+  .cta-row{margin-top:36px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+  .btn{background:var(--gold); color:#2B1620; font-weight:800; font-size:14px; padding:15px 28px; border-radius:100px; text-decoration:none; transition:transform .2s, box-shadow .2s; display:inline-block;}
+  .btn:hover{transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(212,175,55,.55);}
+  .btn-ghost{font-family:'Caveat',cursive; font-size:19px; color:var(--blush); text-decoration:none;}
+
+  .deck{position:relative; height:420px;}
+  .card{
+    position:absolute; width:280px; height:180px; border-radius:14px; padding:24px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.6); display:flex; flex-direction:column; justify-content:space-between;
+    transition:transform .35s ease;
+  }
+  .card:hover{transform:rotate(0deg) translateY(-6px) scale(1.02) !important; z-index:9 !important;}
+  .card h4{font-family:'Fraunces',serif; font-size:19px; font-weight:600;}
+  .card p{font-size:12px; opacity:.85; margin-top:6px;}
+  .card .k{font-size:11px; letter-spacing:.1em; text-transform:uppercase; opacity:.75;}
+  .c1{background:var(--wine); top:10px; left:40px; transform:rotate(-8deg); z-index:1; color:var(--text);}
+  .c2{background:var(--brown); top:70px; left:110px; transform:rotate(3deg); z-index:2; color:var(--text);}
+  .c3{background:var(--blush); top:150px; left:20px; transform:rotate(-3deg); z-index:3; color:#3A1420;}
+  .c4{background:linear-gradient(135deg,var(--gold),#a8863a); top:210px; left:100px; transform:rotate(9deg); z-index:4; color:#2B1620;}
+
+  /* ---------- section heads (shared) ---------- */
+  .second-head{max-width:620px; margin-bottom:56px;}
+  .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
+  .second-head h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,3vw,40px); margin-top:6px; line-height:1.2;}
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- DECK / SERVICES ---------- */
+  .deck-section{background:var(--bg2); padding:100px 6vw 100px; border-top:1px solid var(--line);}
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .tile{border-radius:14px; padding:28px 24px; min-height:190px; display:flex; flex-direction:column; justify-content:space-between; transition:transform .25s ease;}
+  .tile:hover{transform:translateY(-6px);}
+  .tile h3{font-family:'Fraunces',serif; font-size:17px; font-weight:600;}
+  .tile p{font-size:12.5px; margin-top:8px; line-height:1.55; opacity:.85;}
+  .t1{background:var(--wine);}
+  .t2{background:var(--brown);}
+  .t3{background:var(--blush); color:#3A1420;}
+  .t4{background:linear-gradient(135deg,var(--gold),#a8863a); color:#2B1620;}
+
+  /* ---------- PROCESS ---------- */
+  .process{padding:110px 6vw 100px;}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .step{
+    background:var(--bg2); border:1px solid var(--line); border-radius:16px; padding:34px 28px;
+    position:relative; transition:transform .3s ease, border-color .3s ease;
+  }
+  .step:hover{transform:translateY(-8px) rotate(-1deg); border-color:rgba(212,175,55,.5);}
+  .step:nth-child(2):hover{transform:translateY(-8px) rotate(1deg);}
+  .step-num{font-family:'Fraunces',serif; font-size:15px; color:var(--gold); border:1px solid var(--gold); width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:22px;}
+  .step h3{font-family:'Fraunces',serif; font-size:19px; font-weight:600;}
+  .step p{font-size:13.5px; color:var(--silver); margin-top:10px; line-height:1.6;}
+  .stack-note{margin-top:46px; display:flex; flex-wrap:wrap; align-items:center; gap:14px;}
+  .stack-note span.label{font-family:'Caveat',cursive; font-size:19px; color:var(--blush); margin-right:6px;}
+  .chip{border:1px solid var(--line); color:var(--silver); font-size:12.5px; padding:8px 16px; border-radius:100px; background:var(--bg2);}
+
+  /* ---------- PROOF STRIP ---------- */
+  .proof{background:var(--wine); padding:56px 6vw; }
+  .proof-inner{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center;}
+  .proof-item .num{font-family:'Fraunces',serif; font-weight:700; font-size:clamp(26px,3vw,38px); color:var(--gold-soft);}
+  .proof-item .lbl{font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--blush); margin-top:6px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:110px 6vw 110px; background:var(--bg2); border-top:1px solid var(--line); display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center;}
+  .about-card{
+    background:var(--blush); color:#3A1420; border-radius:16px; padding:32px 28px; max-width:340px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.5); transform:rotate(-3deg); position:relative;
+  }
+  .about-card .stamp{font-family:'Caveat',cursive; font-size:17px; position:absolute; top:-14px; right:20px; background:var(--gold); color:#2B1620; padding:6px 14px; border-radius:100px; transform:rotate(6deg);}
+  .about-card h4{font-family:'Fraunces',serif; font-size:20px; margin-bottom:10px;}
+  .about-card p{font-size:13.5px; line-height:1.6;}
+  .about-text .kicker{margin-bottom:4px; display:block;}
+  .about-text h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,2.8vw,36px); line-height:1.25; margin-bottom:20px;}
+  .about-text p{font-size:15.5px; line-height:1.75; color:var(--silver); margin-bottom:16px; max-width:520px;}
+  .about-text p strong{color:var(--text); font-weight:700;}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    padding:110px 6vw; text-align:center; background:
+      radial-gradient(700px 340px at 50% 0%, rgba(212,175,55,.16), transparent 70%), var(--bg);
+    border-top:1px solid var(--line);
+  }
+  .cta .kicker{display:block;}
+  .cta h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(32px,4vw,52px); max-width:760px; margin:14px auto 22px; line-height:1.15;}
+  .cta p{color:var(--silver); font-size:16px; max-width:480px; margin:0 auto 36px;}
+  .cta-buttons{display:flex; gap:20px; justify-content:center; flex-wrap:wrap;}
+  .btn-outline{border:1px solid var(--gold); color:var(--gold-soft); font-weight:700; font-size:14px; padding:14px 28px; border-radius:100px; text-decoration:none;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--bg3); padding:44px 6vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-top:1px solid var(--line);}
+  footer .brand{font-size:16px;}
+  footer .meta{font-size:12.5px; color:var(--silver);}
+  footer a.mail{color:var(--gold-soft); text-decoration:none;}
+
+  @media(max-width:960px){
+    .hero{grid-template-columns:1fr; padding-top:40px;}
+    .deck{height:340px; margin-top:10px;}
+    .grid{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr;}
+    .proof-inner{grid-template-columns:1fr 1fr; row-gap:34px;}
+    .about{grid-template-columns:1fr; padding-top:80px;}
+    .about-card{margin:0 auto 20px;}
+    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="brand">Olawumi Elizabeth</div>
+  <div class="nav-links">
+    <a href="work.html">Work</a>
+    <a href="process.html">Process</a>
+    <a href="about.html">About</a>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">AI Automation Specialist · Lagos</span>
+    <h1>A different card for<br>every kind of client —<br><span class="script">one bot behind them all.</span></h1>
+    <p class="sub">I build chatbots and voicebots tailored to your business, whether you run a salon, a clinic, a coaching practice, or a boutique — each one dialed in to sound like you.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact">Get a Custom Bot</a>
+      <a class="btn-ghost" href="work.html">flip through the work →</a>
+    </div>
+  </div>
+  <div class="deck">
+    <div class="card c1"><span class="k">Salon & Beauty</span><h4>Auto-books slots</h4><p>DMs turned into confirmed appointments.</p></div>
+    <div class="card c2"><span class="k">Coaching</span><h4>Qualifies leads</h4><p>Filters inquiries before they hit your calendar.</p></div>
+    <div class="card c3"><span class="k">Clinics</span><h4>Voicebot intake</h4><p>Answers calls, books, and confirms by SMS.</p></div>
+    <div class="card c4"><span class="k">Boutique retail</span><h4>Answers FAQs</h4><p>Stock, pricing & hours, replied to instantly.</p></div>
+  </div>
+</section>
+
+<section class="deck-section" id="deck">
+  <div class="second-head reveal">
+    <span class="kicker">what's in the deck</span>
+    <h2>Four things every build includes, whatever your business looks like.</h2>
+  </div>
+  <div class="grid reveal">
+    <div class="tile t1"><h3>Auto-replies to DMs & FAQs</h3><p>Never miss an inquiry on Instagram, WhatsApp or Facebook.</p></div>
+    <div class="tile t2"><h3>Books appointments for you</h3><p>Straight to your calendar — no manual back and forth.</p></div>
+    <div class="tile t3"><h3>Works everywhere</h3><p>One bot across every channel your clients use.</p></div>
+    <div class="tile t4"><h3>Voicebot for calls</h3><p>Talks to leads naturally and never misses a ring.</p></div>
+  </div>
+  <div class="reveal" style="margin-top:36px;"><a href="work.html" class="btn-ghost">see full case studies →</a></div>
+</section>
+
+<section class="process" id="process">
+  <div class="second-head reveal">
+    <span class="kicker">how it works</span>
+    <h2>From a form to a fully working bot, in three steps.</h2>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>You fill a short form</h3>
+      <p>Tell me about your business, your busiest DMs, and where leads keep slipping through.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>I build the bot</h3>
+      <p>A tailored chatbot or voicebot, written in your voice and mapped to how your clients actually book.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>You plug it in and go</h3>
+      <p>Ready to connect to your existing pages and calendar — with support after launch, not just a handoff.</p>
+    </div>
+  </div>
+  <div class="stack-note reveal">
+    <span class="label">built with</span>
+    <span class="chip">Voiceflow</span>
+    <span class="chip">ManyChat</span>
+    <span class="chip">Chatbase</span>
+    <span class="chip">Vapi</span>
+    <span class="chip">Make</span>
+    <span class="chip">Zapier</span>
+    <span class="chip">GoHighLevel</span>
+  </div>
+  <div class="reveal" style="margin-top:40px;"><a href="process.html" class="btn-ghost">see the full process →</a></div>
+</section>
+
+<section class="proof">
+  <div class="proof-inner">
+    <div class="proof-item"><div class="num">100%</div><div class="lbl">Job Success</div></div>
+    <div class="proof-item"><div class="num">Top Rated</div><div class="lbl">Upwork Status</div></div>
+    <div class="proof-item"><div class="num">$9K+</div><div class="lbl">Client Earnings</div></div>
+    <div class="proof-item"><div class="num">22</div><div class="lbl">Projects Delivered</div></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-card reveal">
+    <span class="stamp">still here after launch</span>
+    <h4>Ada N.</h4>
+    <p>"She didn't just hand it over — she stuck around to fine-tune it as we grew. It genuinely feels like having someone on the team."</p>
+  </div>
+  <div class="about-text reveal">
+    <span class="kicker">the person behind the bot</span>
+    <h2>I build systems the way I'd want to be treated as a client — closely, and without disappearing.</h2>
+    <p>I'm Elizabeth — an AI automation specialist based in Lagos, working with service-based businesses that are busy enough to need a bot and thoughtful enough to still care how it sounds.</p>
+    <p><strong>I don't just set things up and walk away.</strong> Most of my clients keep me on to monitor how conversations are going, fix what's not converting, and add new automations as their business grows.</p>
+    <p>If your DMs are piling up, your calls are going unanswered, or your booking process is more manual than it should be — that's exactly the kind of mess I like sorting out.</p>
+    <a href="about.html" class="btn-ghost">more about me →</a>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <span class="kicker">let's build yours</span>
+  <h2>Ready to let a bot hold the front desk?</h2>
+  <p>Tell me a bit about your business and where things are slipping — I'll reply within a few hours.</p>
+  <div class="cta-buttons">
+    <a class="btn" href="mailto:olawumie26@gmail.com">Get a Custom Bot Now</a>
+    <a class="btn-outline" href="mailto:olawumie26@gmail.com">Book a Consultation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">Olawumi Elizabeth</div>
+  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

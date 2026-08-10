@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Olawumi Elizabeth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2B1620; --bg2:#20101A; --bg3:#160A11;
+    --wine:#7A1F3D; --blush:#E8A9C2; --brown:#5A3A2E;
+    --gold:#D4AF37; --gold-soft:#E8C868; --silver:#B8B8B8;
+    --text:#F3E6EC; --line:rgba(212,175,55,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:'Manrope',sans-serif; overflow-x:hidden;}
+  a{color:inherit;}
+
+  nav{display:flex; justify-content:space-between; align-items:center; padding:28px 6vw; position:sticky; top:0; z-index:50; background:rgba(43,22,32,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .nav-links{display:flex; gap:32px; font-size:13px; color:var(--silver); align-items:center;}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-soft);}
+  .nav-links a.active{color:var(--gold-soft);}
+  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none;}
+
+  .page-hero{padding:80px 6vw 70px; max-width:820px;}
+  .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
+  .page-hero h1{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(34px,4.4vw,54px); line-height:1.12; margin-top:10px;}
+  .page-hero p{font-size:16.5px; color:var(--silver); line-height:1.7; margin-top:22px; max-width:600px;}
+
+  .cases{padding:20px 6vw 100px; display:flex; flex-direction:column; gap:26px;}
+  .case{
+    border-radius:20px; padding:44px 42px; display:grid; grid-template-columns:.9fr 1.5fr; gap:36px;
+    position:relative; overflow:hidden; transition:transform .3s ease;
+  }
+  .case:hover{transform:translateY(-4px);}
+  .case::after{content:""; position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:rgba(255,255,255,.06);}
+  .case1{background:var(--wine);}
+  .case2{background:var(--brown);}
+  .case3{background:var(--blush); color:#3A1420;}
+  .case4{background:linear-gradient(135deg,var(--gold),#a8863a); color:#2B1620;}
+  .case-tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; opacity:.75; margin-bottom:10px; display:block;}
+  .case-left h3{font-family:'Fraunces',serif; font-size:26px; font-weight:600; line-height:1.2;}
+  .case-stats{margin-top:22px; display:flex; flex-direction:column; gap:10px;}
+  .stat{font-family:'Fraunces',serif; font-size:22px; font-weight:700;}
+  .stat + span{display:block; font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; opacity:.7; margin-top:-6px;}
+  .case-right h4{font-size:12px; text-transform:uppercase; letter-spacing:.08em; opacity:.7; margin-bottom:8px;}
+  .case-right p{font-size:14.5px; line-height:1.7; opacity:.92; margin-bottom:18px;}
+  .tools{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;}
+  .tool-chip{font-size:11.5px; border:1px solid currentColor; opacity:.8; padding:5px 12px; border-radius:100px;}
+
+  .cta{padding:100px 6vw; text-align:center; background:radial-gradient(700px 340px at 50% 0%, rgba(212,175,55,.16), transparent 70%), var(--bg2); border-top:1px solid var(--line);}
+  .cta h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,3.6vw,44px); max-width:700px; margin:14px auto 22px; line-height:1.2;}
+  .cta p{color:var(--silver); font-size:15.5px; max-width:460px; margin:0 auto 30px;}
+  .btn{background:var(--gold); color:#2B1620; font-weight:800; font-size:14px; padding:15px 28px; border-radius:100px; text-decoration:none; display:inline-block;}
+
+  footer{background:var(--bg3); padding:44px 6vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-top:1px solid var(--line);}
+  footer .meta{font-size:12.5px; color:var(--silver);}
+  footer a.mail{color:var(--gold-soft); text-decoration:none;}
+
+  @media(max-width:900px){
+    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .case{grid-template-columns:1fr; padding:32px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Olawumi Elizabeth</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html" class="active">Work</a>
+    <a href="process.html">Process</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <span class="kicker">the work</span>
+  <h1>Four kinds of businesses. Four different bots. Same job — never miss a lead.</h1>
+  <p>Every build starts the same way: figure out where your leads actually slip through, then design a chatbot or voicebot around that exact gap. Here's what that's looked like across a few different types of clients.</p>
+</section>
+
+<section class="cases">
+
+  <div class="case case1">
+    <div class="case-left">
+      <span class="case-tag">Salon & Beauty</span>
+      <h3>An Instagram DM system that books itself</h3>
+      <div class="case-stats">
+        <div><span class="stat">40s</span><span>Avg. reply time</span></div>
+        <div><span class="stat">3x</span><span>More DMs converted to bookings</span></div>
+      </div>
+    </div>
+    <div class="case-right">
+      <h4>The gap</h4>
+      <p>Bookings were coming in through Instagram DMs, but replies depended on whoever had a free hand — inquiries sat for hours and a lot of them just went cold.</p>
+      <h4>What I built</h4>
+      <p>A ManyChat flow that greets every DM instantly, asks the right qualifying questions (service, preferred date, budget), and drops a confirmed slot straight onto the calendar — with a human handoff built in for anything unusual.</p>
+      <div class="tools"><span class="tool-chip">ManyChat</span><span class="tool-chip">Make</span><span class="tool-chip">Instagram</span></div>
+    </div>
+  </div>
+
+  <div class="case case2">
+    <div class="case-left">
+      <span class="case-tag">Coaching</span>
+      <h3>A lead-qualification flow that protects the calendar</h3>
+      <div class="case-stats">
+        <div><span class="stat">60%</span><span>Fewer unqualified calls booked</span></div>
+        <div><span class="stat">24/7</span><span>Lead capture, no manual screening</span></div>
+      </div>
+    </div>
+    <div class="case-right">
+      <h4>The gap</h4>
+      <p>Discovery calls were filling up with people who weren't a fit — budget, timeline, or goals didn't line up, and that was only becoming clear once the call had already started.</p>
+      <h4>What I built</h4>
+      <p>A conversational qualification flow across web chat and Instagram that filters serious leads before they ever reach the calendar, and routes the good-fit ones straight to a booking link.</p>
+      <div class="tools"><span class="tool-chip">Voiceflow</span><span class="tool-chip">Zapier</span><span class="tool-chip">GoHighLevel</span></div>
+    </div>
+  </div>
+
+  <div class="case case3">
+    <div class="case-left">
+      <span class="case-tag">Clinics</span>
+      <h3>A voicebot that answers the phone like a receptionist</h3>
+      <div class="case-stats">
+        <div><span class="stat">0</span><span>Missed calls after hours</span></div>
+        <div><span class="stat">100%</span><span>Calls confirmed by SMS</span></div>
+      </div>
+    </div>
+    <div class="case-right">
+      <h4>The gap</h4>
+      <p>Front-desk staff couldn't answer every call during peak hours, and after-hours calls simply went to voicemail — patients would call the next available clinic instead.</p>
+      <h4>What I built</h4>
+      <p>A voicebot that handles inbound calls in a natural, unscripted-sounding voice, checks availability, books the appointment, and sends an SMS confirmation — day or night.</p>
+      <div class="tools"><span class="tool-chip">Vapi</span><span class="tool-chip">Make</span><span class="tool-chip">Twilio</span></div>
+    </div>
+  </div>
+
+  <div class="case case4">
+    <div class="case-left">
+      <span class="case-tag">Boutique Retail</span>
+      <h3>One assistant, answering every "is this in stock?"</h3>
+      <div class="case-stats">
+        <div><span class="stat">80%</span><span>Of FAQs resolved without a human</span></div>
+        <div><span class="stat">3</span><span>Channels, one brain</span></div>
+      </div>
+    </div>
+    <div class="case-right">
+      <h4>The gap</h4>
+      <p>The same five questions — stock, pricing, delivery, hours, returns — kept eating up hours across Instagram, WhatsApp, and the website chat widget.</p>
+      <h4>What I built</h4>
+      <p>A single knowledge base powering a Chatbase-driven assistant deployed across all three channels, so answers stay identical everywhere and the owner only steps in for the unusual stuff.</p>
+      <div class="tools"><span class="tool-chip">Chatbase</span><span class="tool-chip">WhatsApp API</span><span class="tool-chip">Make</span></div>
+    </div>
+  </div>
+
+</section>
+
+<section class="cta">
+  <span class="kicker">your turn</span>
+  <h2>Tell me what's piling up in your DMs, and I'll show you what a build looks like for it.</h2>
+  <p>Every project starts with a short form — no commitment, just a look at where your leads are actually falling through.</p>
+  <a class="btn" href="mailto:olawumie26@gmail.com">Get a Custom Bot Now</a>
+</section>
+
+<footer>
+  <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;">Olawumi Elizabeth</div>
+  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
+</footer>
+
+</body>
+</html>

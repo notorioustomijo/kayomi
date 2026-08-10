@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Process — Olawumi Elizabeth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#2B1620; --bg2:#20101A; --bg3:#160A11;
+    --wine:#7A1F3D; --blush:#E8A9C2; --brown:#5A3A2E;
+    --gold:#D4AF37; --gold-soft:#E8C868; --silver:#B8B8B8;
+    --text:#F3E6EC; --line:rgba(212,175,55,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); font-family:'Manrope',sans-serif; overflow-x:hidden;}
+  a{color:inherit;}
+
+  nav{display:flex; justify-content:space-between; align-items:center; padding:28px 6vw; position:sticky; top:0; z-index:50; background:rgba(43,22,32,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .nav-links{display:flex; gap:32px; font-size:13px; color:var(--silver); align-items:center;}
+  .nav-links a{text-decoration:none; transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-soft);}
+  .nav-links a.active{color:var(--gold-soft);}
+  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none;}
+
+  .page-hero{padding:80px 6vw 70px; max-width:820px;}
+  .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
+  .page-hero h1{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(34px,4.4vw,54px); line-height:1.12; margin-top:10px;}
+  .page-hero p{font-size:16.5px; color:var(--silver); line-height:1.7; margin-top:22px; max-width:600px;}
+
+  .timeline{padding:20px 6vw 100px; max-width:900px;}
+  .t-row{display:grid; grid-template-columns:110px 1fr; gap:30px; padding:36px 0; border-top:1px solid var(--line); position:relative;}
+  .t-row:last-child{border-bottom:1px solid var(--line);}
+  .t-mark{font-family:'Fraunces',serif; font-size:15px; color:var(--gold); position:relative;}
+  .t-mark .dot{position:absolute; left:-26px; top:6px; width:9px; height:9px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(212,175,55,.15);}
+  .t-mark .day{display:block; font-family:'Manrope',sans-serif; font-size:11px; color:var(--silver); text-transform:uppercase; letter-spacing:.06em; margin-top:6px;}
+  .t-body h3{font-family:'Fraunces',serif; font-size:20px; font-weight:600;}
+  .t-body p{font-size:14.5px; color:var(--silver); line-height:1.7; margin-top:10px; max-width:560px;}
+
+  .stack{background:var(--bg2); padding:90px 6vw; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .stack-head{max-width:600px; margin-bottom:44px;}
+  .stack-head h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,3vw,38px); margin-top:6px;}
+  .stack-groups{display:grid; grid-template-columns:1fr 1fr; gap:30px;}
+  .stack-group{background:var(--bg); border:1px solid var(--line); border-radius:14px; padding:28px 26px;}
+  .stack-group h4{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold); margin-bottom:16px;}
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px;}
+  .chip{border:1px solid var(--line); color:var(--silver); font-size:12.5px; padding:8px 16px; border-radius:100px;}
+
+  .faq{padding:100px 6vw; max-width:800px;}
+  .faq h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,3vw,38px); margin-bottom:40px;}
+  .qa{border-top:1px solid var(--line); padding:26px 0;}
+  .qa:last-child{border-bottom:1px solid var(--line);}
+  .qa h3{font-family:'Fraunces',serif; font-size:17px; font-weight:600;}
+  .qa p{font-size:14.5px; color:var(--silver); line-height:1.7; margin-top:10px;}
+
+  .cta{padding:100px 6vw; text-align:center; background:radial-gradient(700px 340px at 50% 0%, rgba(212,175,55,.16), transparent 70%), var(--bg2); border-top:1px solid var(--line);}
+  .cta h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(28px,3.6vw,44px); max-width:700px; margin:14px auto 22px; line-height:1.2;}
+  .cta p{color:var(--silver); font-size:15.5px; max-width:460px; margin:0 auto 30px;}
+  .btn{background:var(--gold); color:#2B1620; font-weight:800; font-size:14px; padding:15px 28px; border-radius:100px; text-decoration:none; display:inline-block;}
+
+  footer{background:var(--bg3); padding:44px 6vw; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; border-top:1px solid var(--line);}
+  footer .meta{font-size:12.5px; color:var(--silver);}
+  footer a.mail{color:var(--gold-soft); text-decoration:none;}
+
+  @media(max-width:900px){
+    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .t-row{grid-template-columns:1fr; gap:10px;}
+    .stack-groups{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Olawumi Elizabeth</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="work.html">Work</a>
+    <a href="process.html" class="active">Process</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <span class="kicker">how it works</span>
+  <h1>No code for you to touch, no guessing on my end. Just a bot that fits how your business actually runs.</h1>
+  <p>Here's exactly what happens between the form you fill out and the bot going live — plus what keeps it running well after that.</p>
+</section>
+
+<section class="timeline">
+
+  <div class="t-row">
+    <div class="t-mark"><span class="dot"></span>01<span class="day">Day 1</span></div>
+    <div class="t-body">
+      <h3>You fill a short form</h3>
+      <p>A few questions about your business, where your leads currently come from, and where they tend to go quiet — DMs left unanswered, calls missed, bookings that stall halfway.</p>
+    </div>
+  </div>
+
+  <div class="t-row">
+    <div class="t-mark"><span class="dot"></span>02<span class="day">Day 2–3</span></div>
+    <div class="t-body">
+      <h3>I map the conversation</h3>
+      <p>Before any building happens, I sketch out how the bot should actually talk — the questions it asks, the tone it uses, and the exact point where it either books the appointment or hands off to you.</p>
+    </div>
+  </div>
+
+  <div class="t-row">
+    <div class="t-mark"><span class="dot"></span>03<span class="day">Day 4–7</span></div>
+    <div class="t-body">
+      <h3>I build and test it</h3>
+      <p>The chatbot or voicebot gets built in the right tool for the job — ManyChat, Voiceflow, Chatbase, or Vapi — then connected to your calendar and CRM through Make or Zapier, and tested against real-world messy inputs, not just the happy path.</p>
+    </div>
+  </div>
+
+  <div class="t-row">
+    <div class="t-mark"><span class="dot"></span>04<span class="day">Launch day</span></div>
+    <div class="t-body">
+      <h3>You get a bot ready to plug in</h3>
+      <p>Fully functional, connected to your existing pages and calendar, with a walkthrough so you know exactly how it works — no black box.</p>
+    </div>
+  </div>
+
+  <div class="t-row">
+    <div class="t-mark"><span class="dot"></span>05<span class="day">Ongoing</span></div>
+    <div class="t-body">
+      <h3>I stick around</h3>
+      <p>Most clients keep me on month-to-month to monitor how conversations are actually going, fix what isn't converting, and add new automations as the business grows. This part is where a lot of bots fall apart — I try to make sure yours doesn't.</p>
+    </div>
+  </div>
+
+</section>
+
+<section class="stack">
+  <div class="stack-head">
+    <span class="kicker">what it's built with</span>
+    <h2>Tools chosen for what your business needs — not the other way around.</h2>
+  </div>
+  <div class="stack-groups">
+    <div class="stack-group">
+      <h4>Chat & Voice</h4>
+      <div class="chip-row">
+        <span class="chip">ManyChat</span>
+        <span class="chip">Voiceflow</span>
+        <span class="chip">Chatbase</span>
+        <span class="chip">Vapi</span>
+      </div>
+    </div>
+    <div class="stack-group">
+      <h4>Automation & CRM</h4>
+      <div class="chip-row">
+        <span class="chip">Make</span>
+        <span class="chip">Zapier</span>
+        <span class="chip">GoHighLevel</span>
+        <span class="chip">Twilio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Questions people usually ask first</h2>
+  <div class="qa">
+    <h3>Do I need to know how to code?</h3>
+    <p>No. Everything is built and configured on my end — you get a working bot, not a project to finish.</p>
+  </div>
+  <div class="qa">
+    <h3>How long does a build take?</h3>
+    <p>Most projects go from form to a live, tested bot in about a week. More complex voicebot or multi-channel builds can take a bit longer.</p>
+  </div>
+  <div class="qa">
+    <h3>What if it needs changes after launch?</h3>
+    <p>That's expected. I offer ongoing monthly support for clients who want the bot monitored and refined as their business changes — most do.</p>
+  </div>
+  <div class="qa">
+    <h3>Which platforms can it work on?</h3>
+    <p>Instagram, WhatsApp, Facebook Messenger, your website, and inbound phone calls — one bot, or several, depending on where your leads actually are.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <span class="kicker">ready when you are</span>
+  <h2>Fill the form, and I'll take it from there.</h2>
+  <p>No pressure, no sales call required first — just tell me what's going on with your leads.</p>
+  <a class="btn" href="mailto:olawumie26@gmail.com">Start the Process</a>
+</section>
+
+<footer>
+  <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;">Olawumi Elizabeth</div>
+  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
+</footer>
+
+</body>
+</html>
