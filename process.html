@@ -20,11 +20,18 @@
 
   nav{display:flex; justify-content:space-between; align-items:center; padding:28px 6vw; position:sticky; top:0; z-index:50; background:rgba(43,22,32,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .brand-tag{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--silver); margin-top:3px;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-links{display:flex; gap:32px; font-size:13px; color:var(--silver); align-items:center;}
   .nav-links a{text-decoration:none; transition:color .2s;}
   .nav-links a:hover{color:var(--gold-soft);}
   .nav-links a.active{color:var(--gold-soft);}
-  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none;}
+  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none; white-space:nowrap;}
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer;
+  }
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--text); margin:0 auto;}
 
   .page-hero{padding:80px 6vw 70px; max-width:820px;}
   .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
@@ -66,7 +73,17 @@
   footer a.mail{color:var(--gold-soft); text-decoration:none;}
 
   @media(max-width:900px){
-    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:flex; flex-direction:column; align-items:flex-start; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg2); border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; padding:0 6vw; transition:max-height .3s ease, padding .3s ease;
+    }
+    .nav-links.open{max-height:320px; padding:18px 6vw 26px;}
+    .nav-links a{width:100%; padding:12px 0; border-top:1px solid rgba(255,255,255,.06); font-size:14px;}
+    .nav-links a:first-child{border-top:none;}
+    .nav-links a.nav-cta{width:auto; margin-top:14px; border-top:none; padding:10px 20px;}
     .t-row{grid-template-columns:1fr; gap:10px;}
     .stack-groups{grid-template-columns:1fr;}
   }
@@ -74,30 +91,38 @@
 </head>
 <body>
 
-<nav>
-  <div class="brand">Olawumi Elizabeth</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="work.html">Work</a>
-    <a href="process.html" class="active">Process</a>
-    <a href="about.html">About</a>
-    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+<nav id="nav">
+  <div>
+    <div class="brand">Olawumi Elizabeth</div>
+    <div class="brand-tag">AI Automation for Coaches · Lagos</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="process.html" class="active">Process</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <section class="page-hero">
   <span class="kicker">how it works</span>
-  <h1>No code for you to touch, no guessing on my end. Just a bot that fits how your business actually runs.</h1>
-  <p>Here's exactly what happens between the form you fill out and the bot going live — plus what keeps it running well after that.</p>
+  <h1>No tech for you to learn, no guessing on my end. Just a system that fits how you already sell.</h1>
+  <p>Here's exactly what happens between our first conversation and the system going live — plus what keeps it running well after that.</p>
 </section>
 
 <section class="timeline">
 
   <div class="t-row">
-    <div class="t-mark"><span class="dot"></span>01<span class="day">Day 1</span></div>
+    <div class="t-mark"><span class="dot"></span>01<span class="day">First call</span></div>
     <div class="t-body">
-      <h3>You fill a short form</h3>
-      <p>A few questions about your business, where your leads currently come from, and where they tend to go quiet — DMs left unanswered, calls missed, bookings that stall halfway.</p>
+      <h3>We talk about where leads are slipping</h3>
+      <p>No form to fill out alone — a short call where you walk me through your calendar, your team, and where deals tend to go quiet: DMs left unanswered, calls missed, bookings that stall halfway. I ask the questions; you don't need to know the tech.</p>
     </div>
   </div>
 
@@ -105,23 +130,23 @@
     <div class="t-mark"><span class="dot"></span>02<span class="day">Day 2–3</span></div>
     <div class="t-body">
       <h3>I map the conversation</h3>
-      <p>Before any building happens, I sketch out how the bot should actually talk — the questions it asks, the tone it uses, and the exact point where it either books the appointment or hands off to you.</p>
+      <p>Before any building happens, I sketch out how the system should actually talk — the questions it asks, the tone it uses, and the exact point where it either books the call or hands off to you.</p>
     </div>
   </div>
 
   <div class="t-row">
     <div class="t-mark"><span class="dot"></span>03<span class="day">Day 4–7</span></div>
     <div class="t-body">
-      <h3>I build and test it</h3>
-      <p>The chatbot or voicebot gets built in the right tool for the job — ManyChat, Voiceflow, Chatbase, or Vapi — then connected to your calendar and CRM through Make or Zapier, and tested against real-world messy inputs, not just the happy path.</p>
+      <h3>I build it around how you already sell</h3>
+      <p>The follow-up and lead-capture system gets built in the right tool for the job — ManyChat, Voiceflow, Chatbase, or Vapi — then connected to your calendar and CRM through Make or Zapier, and tested against real-world messy inputs, not just the happy path.</p>
     </div>
   </div>
 
   <div class="t-row">
-    <div class="t-mark"><span class="dot"></span>04<span class="day">Launch day</span></div>
+    <div class="t-mark"><span class="dot"></span>04<span class="day">Launch</span></div>
     <div class="t-body">
-      <h3>You get a bot ready to plug in</h3>
-      <p>Fully functional, connected to your existing pages and calendar, with a walkthrough so you know exactly how it works — no black box.</p>
+      <h3>It runs quietly in the background</h3>
+      <p>Live and connected to your existing calendar and CRM in weeks, not months, with a plain-English walkthrough so you know exactly what it's doing — no black box, nothing to approve line by line unless you want to.</p>
     </div>
   </div>
 
@@ -129,7 +154,7 @@
     <div class="t-mark"><span class="dot"></span>05<span class="day">Ongoing</span></div>
     <div class="t-body">
       <h3>I stick around</h3>
-      <p>Most clients keep me on month-to-month to monitor how conversations are actually going, fix what isn't converting, and add new automations as the business grows. This part is where a lot of bots fall apart — I try to make sure yours doesn't.</p>
+      <p>Most clients keep me on month-to-month to monitor how conversations are actually landing, fix what isn't converting, and add new automation as the business grows. This is where a lot of systems fall apart after a vendor disappears — I try to make sure yours doesn't.</p>
     </div>
   </div>
 
@@ -163,37 +188,54 @@
 </section>
 
 <section class="faq">
-  <h2>Questions people usually ask first</h2>
+  <h2>Questions coaches usually ask first</h2>
   <div class="qa">
-    <h3>Do I need to know how to code?</h3>
-    <p>No. Everything is built and configured on my end — you get a working bot, not a project to finish.</p>
+    <h3>Will this make my business feel less personal?</h3>
+    <p>No — that's the whole point of how it's built. The system handles the mechanical follow-up (the reminders, the re-asks, the "did you still want to book") so you stay the relationship-driven closer. It protects your style, it doesn't replace it.</p>
+  </div>
+  <div class="qa">
+    <h3>Do I need to know how to code, or become "a tech person"?</h3>
+    <p>No. Everything is built and configured on my end — you get a working system, not a project to finish.</p>
   </div>
   <div class="qa">
     <h3>How long does a build take?</h3>
-    <p>Most projects go from form to a live, tested bot in about a week. More complex voicebot or multi-channel builds can take a bit longer.</p>
+    <p>Most systems go from our first conversation to live and tested in about a week. More involved voice or multi-channel builds can take a bit longer.</p>
   </div>
   <div class="qa">
     <h3>What if it needs changes after launch?</h3>
-    <p>That's expected. I offer ongoing monthly support for clients who want the bot monitored and refined as their business changes — most do.</p>
+    <p>That's expected. I offer ongoing monthly support for clients who want the system monitored and refined as their business changes — most do, and it's usually where the real results show up.</p>
   </div>
   <div class="qa">
-    <h3>Which platforms can it work on?</h3>
-    <p>Instagram, WhatsApp, Facebook Messenger, your website, and inbound phone calls — one bot, or several, depending on where your leads actually are.</p>
+    <h3>Which channels can it work across?</h3>
+    <p>LinkedIn and web inquiries, email, podcast/webinar opt-ins, and inbound phone calls — one connected system, wherever your leads are actually coming from.</p>
   </div>
 </section>
 
 <section class="cta">
   <span class="kicker">ready when you are</span>
-  <h2>Fill the form, and I'll take it from there.</h2>
-  <p>No pressure, no sales call required first — just tell me what's going on with your leads.</p>
-  <a class="btn" href="mailto:olawumie26@gmail.com">Start the Process</a>
+  <h2>Let's have the conversation, and I'll take it from there.</h2>
+  <p>No pressure, no self-serve checkout — just a short call to see where things are slipping.</p>
+  <a class="btn" href="mailto:olawumie26@gmail.com">Book a Consultation</a>
 </section>
 
 <footer>
   <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;">Olawumi Elizabeth</div>
-  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <div class="meta">AI Automation for Coaches · Lagos, Nigeria</div>
   <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
 </footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
 
 </body>
 </html>

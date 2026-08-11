@@ -20,11 +20,18 @@
 
   nav{display:flex; justify-content:space-between; align-items:center; padding:28px 6vw; position:sticky; top:0; z-index:50; background:rgba(43,22,32,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .brand-tag{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--silver); margin-top:3px;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-links{display:flex; gap:32px; font-size:13px; color:var(--silver); align-items:center;}
   .nav-links a{text-decoration:none; transition:color .2s;}
   .nav-links a:hover{color:var(--gold-soft);}
   .nav-links a.active{color:var(--gold-soft);}
-  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none;}
+  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none; white-space:nowrap;}
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer;
+  }
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--text); margin:0 auto;}
   .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
 
   .about-hero{padding:80px 6vw 90px; display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center;}
@@ -75,7 +82,17 @@
   footer a.mail{color:var(--gold-soft); text-decoration:none;}
 
   @media(max-width:900px){
-    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:flex; flex-direction:column; align-items:flex-start; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg2); border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; padding:0 6vw; transition:max-height .3s ease, padding .3s ease;
+    }
+    .nav-links.open{max-height:320px; padding:18px 6vw 26px;}
+    .nav-links a{width:100%; padding:12px 0; border-top:1px solid rgba(255,255,255,.06); font-size:14px;}
+    .nav-links a:first-child{border-top:none;}
+    .nav-links a.nav-cta{width:auto; margin-top:14px; border-top:none; padding:10px 20px;}
     .about-hero{grid-template-columns:1fr; padding-top:50px;}
     .about-card{margin:0 auto 10px;}
     .trait-grid{grid-template-columns:1fr 1fr;}
@@ -85,14 +102,22 @@
 </head>
 <body>
 
-<nav>
-  <div class="brand">Olawumi Elizabeth</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="work.html">Work</a>
-    <a href="process.html">Process</a>
-    <a href="about.html" class="active">About</a>
-    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+<nav id="nav">
+  <div>
+    <div class="brand">Olawumi Elizabeth</div>
+    <div class="brand-tag">AI Automation for Coaches · Lagos</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="process.html">Process</a>
+      <a href="about.html" class="active">About</a>
+      <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -102,17 +127,17 @@
     <h4>Elizabeth</h4>
     <div class="facts">
       <div><span>Based in</span><b>Lagos, Nigeria</b></div>
-      <div><span>Role</span><b>AI Automation Specialist</b></div>
+      <div><span>Focus</span><b>Coaches & advisory businesses</b></div>
       <div><span>Avg. response</span><b>0–4 hours</b></div>
       <div><span>Status</span><b>Top Rated · 100% Job Success</b></div>
     </div>
   </div>
   <div>
-    <span class="kicker">the person behind the bot</span>
+    <span class="kicker">the person behind the system</span>
     <h1>I build systems the way I'd want to be treated as a client — closely, and without disappearing.</h1>
-    <p>I'm Elizabeth — an AI automation specialist based in Lagos, working with service-based businesses that are busy enough to need a bot and thoughtful enough to still care how it sounds.</p>
-    <p><strong>I don't just set things up and walk away.</strong> Most of my clients keep me on to monitor how conversations are going, fix what's not converting, and add new automations as their business grows. Clear systems, clean automation, reliable support — that's the whole approach.</p>
-    <p>If your DMs are piling up, your calls are going unanswered, or your booking process is more manual than it should be, that's exactly the kind of mess I like sorting out.</p>
+    <p>I'm Elizabeth, an AI automation specialist based in Lagos, working with coaches and other relationship-driven businesses who are busy enough to need a system — and thoughtful enough to still care how it sounds.</p>
+    <p><strong>I don't set things up and walk away.</strong> Most of my clients keep me on to monitor how conversations are landing, fix what's not converting, and add new automation as their business grows. Clear systems, clean automation, reliable support — that's the whole approach.</p>
+    <p>If leads are going cold while you're in session, no-shows are quietly costing you revenue, or your team can't keep the CRM straight, that's exactly the kind of mess I like sorting out.</p>
   </div>
 </section>
 
@@ -124,7 +149,7 @@
   <div class="trait-grid">
     <div class="trait tr1"><h3>Detail-first</h3><p>I'd rather ask one more question upfront than fix a broken flow later.</p></div>
     <div class="trait tr2"><h3>Genuinely reliable</h3><p>0–4 hour response time, and I don't go quiet mid-project.</p></div>
-    <div class="trait tr3"><h3>Sounds like you</h3><p>Every bot is written in your business's voice, not a generic script.</p></div>
+    <div class="trait tr3"><h3>Sounds like you</h3><p>Every system is written in your voice, not a generic script — it enhances how you already sell, it doesn't replace it.</p></div>
     <div class="trait tr4"><h3>In it for the long run</h3><p>Most engagements turn into ongoing monthly support, by client choice.</p></div>
   </div>
 </section>
@@ -137,15 +162,15 @@
   <div class="quote-grid">
     <div class="quote-card">
       <p>"She didn't just hand it over — she stuck around to fine-tune it as we grew. It genuinely feels like having someone on the team."</p>
-      <div class="who">Ada N. <span>Salon owner</span></div>
+      <div class="who">Ada N. <span>Executive coach</span></div>
     </div>
     <div class="quote-card">
-      <p>"Our DMs used to pile up for hours. Now everything gets a reply in under a minute, and I only step in for the tricky ones."</p>
-      <div class="who">T. Balogun <span>Coaching business</span></div>
+      <p>"Leads used to pile up for hours between sessions. Now everything gets a reply in under a minute, and I only step in for the ones that matter."</p>
+      <div class="who">T. Balogun <span>Business coach</span></div>
     </div>
     <div class="quote-card">
-      <p>"Clear communication from day one, and the bot actually sounds like our front desk — not a robot reading a script."</p>
-      <div class="who">Kemi O. <span>Clinic manager</span></div>
+      <p>"Clear communication from day one, and the system actually sounds like me — not a robot reading a script."</p>
+      <div class="who">Kemi O. <span>Leadership coaching practice</span></div>
     </div>
   </div>
 </section>
@@ -159,9 +184,22 @@
 
 <footer>
   <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;">Olawumi Elizabeth</div>
-  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <div class="meta">AI Automation for Coaches · Lagos, Nigeria</div>
   <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
 </footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
 
 </body>
 </html>

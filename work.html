@@ -20,11 +20,18 @@
 
   nav{display:flex; justify-content:space-between; align-items:center; padding:28px 6vw; position:sticky; top:0; z-index:50; background:rgba(43,22,32,.82); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
   .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px;}
+  .brand-tag{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--silver); margin-top:3px;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-links{display:flex; gap:32px; font-size:13px; color:var(--silver); align-items:center;}
   .nav-links a{text-decoration:none; transition:color .2s;}
   .nav-links a:hover{color:var(--gold-soft);}
   .nav-links a.active{color:var(--gold-soft);}
-  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none;}
+  .nav-cta{background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px; padding:10px 20px; border-radius:100px; text-decoration:none; white-space:nowrap;}
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer;
+  }
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--text); margin:0 auto;}
 
   .page-hero{padding:80px 6vw 70px; max-width:820px;}
   .kicker{font-family:'Caveat',cursive; font-size:22px; color:var(--gold);}
@@ -62,101 +69,119 @@
   footer a.mail{color:var(--gold-soft); text-decoration:none;}
 
   @media(max-width:900px){
-    .nav-links{gap:18px;} .nav-links span{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:flex; flex-direction:column; align-items:flex-start; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg2); border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; padding:0 6vw; transition:max-height .3s ease, padding .3s ease;
+    }
+    .nav-links.open{max-height:320px; padding:18px 6vw 26px;}
+    .nav-links a{width:100%; padding:12px 0; border-top:1px solid rgba(255,255,255,.06); font-size:14px;}
+    .nav-links a:first-child{border-top:none;}
+    .nav-links a.nav-cta{width:auto; margin-top:14px; border-top:none; padding:10px 20px;}
     .case{grid-template-columns:1fr; padding:32px 26px;}
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="brand">Olawumi Elizabeth</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="work.html" class="active">Work</a>
-    <a href="process.html">Process</a>
-    <a href="about.html">About</a>
-    <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+<nav id="nav">
+  <div>
+    <div class="brand">Olawumi Elizabeth</div>
+    <div class="brand-tag">AI Automation for Coaches · Lagos</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="work.html" class="active">Work</a>
+      <a href="process.html">Process</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <section class="page-hero">
   <span class="kicker">the work</span>
-  <h1>Four kinds of businesses. Four different bots. Same job — never miss a lead.</h1>
-  <p>Every build starts the same way: figure out where your leads actually slip through, then design a chatbot or voicebot around that exact gap. Here's what that's looked like across a few different types of clients.</p>
+  <h1>One coaching business. Four places leads were quietly dying. Here's what fixed each one.</h1>
+  <p>Every build starts the same way: walk through your actual day, find where a lead goes cold or a deal stalls, then build a system around that exact gap — not a generic bot bolted onto your business.</p>
 </section>
 
 <section class="cases">
 
   <div class="case case1">
     <div class="case-left">
-      <span class="case-tag">Salon & Beauty</span>
-      <h3>An Instagram DM system that books itself</h3>
+      <span class="case-tag">6–7 AM · Overnight backlog</span>
+      <h3>Waking up to a ranked list, not a pile</h3>
       <div class="case-stats">
-        <div><span class="stat">40s</span><span>Avg. reply time</span></div>
-        <div><span class="stat">3x</span><span>More DMs converted to bookings</span></div>
+        <div><span class="stat">0</span><span>Leads sitting unread by morning</span></div>
+        <div><span class="stat">1st</span><span>Thing he sees is what actually matters</span></div>
       </div>
     </div>
     <div class="case-right">
       <h4>The gap</h4>
-      <p>Bookings were coming in through Instagram DMs, but replies depended on whoever had a free hand — inquiries sat for hours and a lot of them just went cold.</p>
+      <p>Every morning meant opening the phone to a backlog of DMs and podcast-lead opt-ins from overnight, with no way to tell which ones were actually hot before wasting time on the wrong one.</p>
       <h4>What I built</h4>
-      <p>A ManyChat flow that greets every DM instantly, asks the right qualifying questions (service, preferred date, budget), and drops a confirmed slot straight onto the calendar — with a human handoff built in for anything unusual.</p>
-      <div class="tools"><span class="tool-chip">ManyChat</span><span class="tool-chip">Make</span><span class="tool-chip">Instagram</span></div>
+      <p>An overnight triage system that scores and sorts every inbound lead by intent while he sleeps, so his inbox opens to a ranked list instead of a pile — and the coldest inquiries never eat into his morning.</p>
+      <div class="tools"><span class="tool-chip">Voiceflow</span><span class="tool-chip">Make</span><span class="tool-chip">GoHighLevel</span></div>
     </div>
   </div>
 
   <div class="case case2">
     <div class="case-left">
-      <span class="case-tag">Coaching</span>
-      <h3>A lead-qualification flow that protects the calendar</h3>
+      <span class="case-tag">9–11 AM · In session</span>
+      <h3>Response time that doesn't depend on his calendar</h3>
       <div class="case-stats">
-        <div><span class="stat">60%</span><span>Fewer unqualified calls booked</span></div>
-        <div><span class="stat">24/7</span><span>Lead capture, no manual screening</span></div>
+        <div><span class="stat">100%</span><span>Of new leads get an instant reply</span></div>
+        <div><span class="stat">0</span><span>Interruptions to client sessions</span></div>
       </div>
     </div>
     <div class="case-right">
       <h4>The gap</h4>
-      <p>Discovery calls were filling up with people who weren't a fit — budget, timeline, or goals didn't line up, and that was only becoming clear once the call had already started.</p>
+      <p>His best hours were spent fully present with clients — which is exactly when new inbound leads went unanswered, sometimes for hours, while he was heads-down doing the work that pays.</p>
       <h4>What I built</h4>
-      <p>A conversational qualification flow across web chat and Instagram that filters serious leads before they ever reach the calendar, and routes the good-fit ones straight to a booking link.</p>
-      <div class="tools"><span class="tool-chip">Voiceflow</span><span class="tool-chip">Zapier</span><span class="tool-chip">GoHighLevel</span></div>
+      <p>An auto-response and booking-link system that fires the moment a new lead comes in, even mid-session, so a prospect never feels ignored and his calendar stops being the bottleneck.</p>
+      <div class="tools"><span class="tool-chip">ManyChat</span><span class="tool-chip">Zapier</span><span class="tool-chip">Calendar sync</span></div>
     </div>
   </div>
 
   <div class="case case3">
     <div class="case-left">
-      <span class="case-tag">Clinics</span>
-      <h3>A voicebot that answers the phone like a receptionist</h3>
+      <span class="case-tag">1–3 PM · No-shows piling up</span>
+      <h3>No-show recovery, running in the background</h3>
       <div class="case-stats">
-        <div><span class="stat">0</span><span>Missed calls after hours</span></div>
-        <div><span class="stat">100%</span><span>Calls confirmed by SMS</span></div>
+        <div><span class="stat">100%</span><span>No-shows get a same-day reschedule link</span></div>
+        <div><span class="stat">0</span><span>Manual follow-up required</span></div>
       </div>
     </div>
     <div class="case-right">
       <h4>The gap</h4>
-      <p>Front-desk staff couldn't answer every call during peak hours, and after-hours calls simply went to voicemail — patients would call the next available clinic instead.</p>
+      <p>Missed discovery calls used to just... disappear. Nobody had time to chase them down between back-to-back client delivery blocks, so a no-show quietly became a lost deal.</p>
       <h4>What I built</h4>
-      <p>A voicebot that handles inbound calls in a natural, unscripted-sounding voice, checks availability, books the appointment, and sends an SMS confirmation — day or night.</p>
-      <div class="tools"><span class="tool-chip">Vapi</span><span class="tool-chip">Make</span><span class="tool-chip">Twilio</span></div>
+      <p>An automated recovery sequence — reschedule links and reminders sent the moment a call is missed — so a no-show turns into a rebooked call instead of a write-off, without him lifting a finger.</p>
+      <div class="tools"><span class="tool-chip">Make</span><span class="tool-chip">Twilio</span><span class="tool-chip">GoHighLevel</span></div>
     </div>
   </div>
 
   <div class="case case4">
     <div class="case-left">
-      <span class="case-tag">Boutique Retail</span>
-      <h3>One assistant, answering every "is this in stock?"</h3>
+      <span class="case-tag">3–4 PM · CRM chasing</span>
+      <h3>A pipeline that updates itself</h3>
       <div class="case-stats">
-        <div><span class="stat">80%</span><span>Of FAQs resolved without a human</span></div>
-        <div><span class="stat">3</span><span>Channels, one brain</span></div>
+        <div><span class="stat">0</span><span>Hours spent chasing his own team</span></div>
+        <div><span class="stat">100%</span><span>Of stages reflect the real call outcome</span></div>
       </div>
     </div>
     <div class="case-right">
       <h4>The gap</h4>
-      <p>The same five questions — stock, pricing, delivery, hours, returns — kept eating up hours across Instagram, WhatsApp, and the website chat widget.</p>
+      <p>His small team wasn't consistently updating the CRM, so he never actually knew where a deal stood — and ended up spending his admin block chasing his own staff instead of running the business.</p>
       <h4>What I built</h4>
-      <p>A single knowledge base powering a Chatbase-driven assistant deployed across all three channels, so answers stay identical everywhere and the owner only steps in for the unusual stuff.</p>
-      <div class="tools"><span class="tool-chip">Chatbase</span><span class="tool-chip">WhatsApp API</span><span class="tool-chip">Make</span></div>
+      <p>A pipeline-hygiene system that updates stages automatically from call outcomes, so the CRM tells the truth without anyone needing to remember to log it.</p>
+      <div class="tools"><span class="tool-chip">Zapier</span><span class="tool-chip">GoHighLevel</span><span class="tool-chip">Make</span></div>
     </div>
   </div>
 
@@ -164,16 +189,29 @@
 
 <section class="cta">
   <span class="kicker">your turn</span>
-  <h2>Tell me what's piling up in your DMs, and I'll show you what a build looks like for it.</h2>
-  <p>Every project starts with a short form — no commitment, just a look at where your leads are actually falling through.</p>
-  <a class="btn" href="mailto:olawumie26@gmail.com">Get a Custom Bot Now</a>
+  <h2>Tell me where your leads are actually slipping, and I'll show you what a system looks like for it.</h2>
+  <p>No self-serve form to fill out alone — just a short conversation to see where the gaps are.</p>
+  <a class="btn" href="mailto:olawumie26@gmail.com">Get a Custom System</a>
 </section>
 
 <footer>
   <div class="brand" style="font-family:'Fraunces',serif; font-weight:600;">Olawumi Elizabeth</div>
-  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <div class="meta">AI Automation for Coaches · Lagos, Nigeria</div>
   <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
 </footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+</script>
 
 </body>
 </html>

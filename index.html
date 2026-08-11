@@ -37,14 +37,20 @@
   }
   nav.scrolled{border-bottom:1px solid var(--line);}
   .brand{font-family:'Fraunces',serif; font-weight:600; font-size:20px; letter-spacing:-.01em;}
+  .brand-tag{font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--silver); margin-top:3px;}
+  .nav-right{display:flex; align-items:center; gap:18px;}
   .nav-links{display:flex; gap:32px; font-size:13px; letter-spacing:.02em; color:var(--silver); align-items:center;}
   .nav-links a{text-decoration:none; transition:color .2s;}
   .nav-links a:hover{color:var(--gold-soft);}
   .nav-cta{
     background:var(--gold); color:#2B1620; font-weight:700; font-size:12.5px;
-    padding:10px 20px; border-radius:100px; text-decoration:none;
+    padding:10px 20px; border-radius:100px; text-decoration:none; white-space:nowrap;
   }
-  /* .nav-toggle{display:none;} */
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px;
+    width:34px; height:34px; background:none; border:1px solid var(--line); border-radius:8px; cursor:pointer;
+  }
+  .nav-toggle span{display:block; width:16px; height:2px; background:var(--text); margin:0 auto;}
 
   /* ---------- HERO ---------- */
   .hero{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding:64px 6vw 100px;}
@@ -121,8 +127,15 @@
     box-shadow:0 30px 60px -20px rgba(0,0,0,.5); transform:rotate(-3deg); position:relative;
   }
   .about-card .stamp{font-family:'Caveat',cursive; font-size:17px; position:absolute; top:-14px; right:20px; background:var(--gold); color:#2B1620; padding:6px 14px; border-radius:100px; transform:rotate(6deg);}
-  .about-card h4{font-family:'Fraunces',serif; font-size:20px; margin-bottom:10px;}
+  .about-card h4{font-family:'Fraunces',serif; font-size:20px; margin-bottom:14px;}
   .about-card p{font-size:13.5px; line-height:1.6;}
+  .about-card .facts{display:flex; flex-direction:column; gap:10px; font-size:13.5px;}
+  .about-card .facts div{display:flex; justify-content:space-between; border-top:1px dashed rgba(58,20,32,.25); padding-top:10px;}
+  .about-card .facts div:first-child{border-top:none; padding-top:0;}
+  .about-card .facts b{font-weight:700;}
+  .testimonial{padding:100px 6vw; background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center;}
+  .testimonial blockquote{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:clamp(20px,2.3vw,28px); line-height:1.55; max-width:760px; margin:16px auto 20px;}
+  .testimonial .who{font-size:13px; color:var(--gold-soft);}
   .about-text .kicker{margin-bottom:4px; display:block;}
   .about-text h2{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(26px,2.8vw,36px); line-height:1.25; margin-bottom:20px;}
   .about-text p{font-size:15.5px; line-height:1.75; color:var(--silver); margin-bottom:16px; max-width:520px;}
@@ -154,51 +167,68 @@
     .proof-inner{grid-template-columns:1fr 1fr; row-gap:34px;}
     .about{grid-template-columns:1fr; padding-top:80px;}
     .about-card{margin:0 auto 20px;}
-    .nav-links{gap:18px;} .nav-links span{display:none;}
-    .nav-links{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-links{
+      display:flex; flex-direction:column; align-items:flex-start; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--bg2); border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; padding:0 6vw; transition:max-height .3s ease, padding .3s ease;
+    }
+    .nav-links.open{max-height:320px; padding:18px 6vw 26px;}
+    .nav-links a{width:100%; padding:12px 0; border-top:1px solid rgba(255,255,255,.06); font-size:14px;}
+    .nav-links a:first-child{border-top:none;}
+    .nav-links a.nav-cta{width:auto; margin-top:14px; border-top:none; padding:10px 20px;}
   }
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="brand">Olawumi Elizabeth</div>
-  <div class="nav-links">
-    <a href="work.html">Work</a>
-    <a href="process.html">Process</a>
-    <a href="about.html">About</a>
-    <a href="#contact" class="nav-cta">Let's Talk</a>
+  <div>
+    <div class="brand">Olawumi Elizabeth</div>
+    <div class="brand-tag">AI Automation for Coaches · Lagos</div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-links" id="navLinks">
+      <a href="work.html">Work</a>
+      <a href="process.html">Process</a>
+      <a href="about.html">About</a>
+      <a href="#contact" class="nav-cta">Let's Talk</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
 <section class="hero">
   <div>
-    <span class="eyebrow">AI Automation Specialist · Lagos</span>
-    <h1>A different card for<br>every kind of client —<br><span class="script">one bot behind them all.</span></h1>
-    <p class="sub">I build chatbots and voicebots tailored to your business, whether you run a salon, a clinic, a coaching practice, or a boutique — each one dialed in to sound like you.</p>
+    <span class="eyebrow">For business & executive coaches</span>
+    <h1>Stop losing clients<br>to <span class="script">slow follow-up.</span></h1>
+    <p class="sub">I build automated systems for business and executive coaches that catch every lead, chase every no-show, and keep your pipeline accurate — so nothing falls through while you're doing the work that actually pays.</p>
     <div class="cta-row">
-      <a class="btn" href="#contact">Get a Custom Bot</a>
-      <a class="btn-ghost" href="work.html">flip through the work →</a>
+      <a class="btn" href="#contact">Get a Custom System</a>
+      <a class="btn-ghost" href="#process">See how it works →</a>
     </div>
   </div>
   <div class="deck">
-    <div class="card c1"><span class="k">Salon & Beauty</span><h4>Auto-books slots</h4><p>DMs turned into confirmed appointments.</p></div>
-    <div class="card c2"><span class="k">Coaching</span><h4>Qualifies leads</h4><p>Filters inquiries before they hit your calendar.</p></div>
-    <div class="card c3"><span class="k">Clinics</span><h4>Voicebot intake</h4><p>Answers calls, books, and confirms by SMS.</p></div>
-    <div class="card c4"><span class="k">Boutique retail</span><h4>Answers FAQs</h4><p>Stock, pricing & hours, replied to instantly.</p></div>
+    <div class="card c1"><span class="k">6:47 AM</span><h4>Overnight leads, triaged</h4><p>12 new inquiries sorted by intent before he's out of bed.</p></div>
+    <div class="card c2"><span class="k">11:02 AM</span><h4>No-show, recovered</h4><p>Reschedule link sent automatically — the deal stays alive.</p></div>
+    <div class="card c3"><span class="k">3:30 PM</span><h4>Pipeline, self-updating</h4><p>CRM reflects the real stage. No chasing the team for notes.</p></div>
+    <div class="card c4"><span class="k">9:47 PM</span><h4>After-hours lead, answered</h4><p>A prospect gets a reply before bed, not tomorrow morning.</p></div>
   </div>
 </section>
 
 <section class="deck-section" id="deck">
   <div class="second-head reveal">
-    <span class="kicker">what's in the deck</span>
-    <h2>Four things every build includes, whatever your business looks like.</h2>
+    <span class="kicker">what's in the system</span>
+    <h2>Built specifically for how coaches actually lose deals.</h2>
   </div>
   <div class="grid reveal">
-    <div class="tile t1"><h3>Auto-replies to DMs & FAQs</h3><p>Never miss an inquiry on Instagram, WhatsApp or Facebook.</p></div>
-    <div class="tile t2"><h3>Books appointments for you</h3><p>Straight to your calendar — no manual back and forth.</p></div>
-    <div class="tile t3"><h3>Works everywhere</h3><p>One bot across every channel your clients use.</p></div>
-    <div class="tile t4"><h3>Voicebot for calls</h3><p>Talks to leads naturally and never misses a ring.</p></div>
+    <div class="tile t1"><h3>Instant lead response</h3><p>No more waking up to a backlog of unanswered inquiries. Every new lead gets an immediate, personal-sounding response — even while you're back-to-back in sessions.</p></div>
+    <div class="tile t2"><h3>No-show recovery, automated</h3><p>Missed calls don't just disappear. Reschedule links and reminders go out automatically, so a no-show doesn't mean a lost deal.</p></div>
+    <div class="tile t3"><h3>A pipeline you can trust</h3><p>Your CRM updates itself from call outcomes — no more chasing your team to log notes, no more guessing where a deal stands.</p></div>
+    <div class="tile t4"><h3>After-hours capture</h3><p>Prospects browsing at 9pm don't wait until tomorrow. They get a response the moment they reach out, without you being on call.</p></div>
   </div>
   <div class="reveal" style="margin-top:36px;"><a href="work.html" class="btn-ghost">see full case studies →</a></div>
 </section>
@@ -206,27 +236,27 @@
 <section class="process" id="process">
   <div class="second-head reveal">
     <span class="kicker">how it works</span>
-    <h2>From a form to a fully working bot, in three steps.</h2>
+    <h2>From a conversation to a working system, in three steps.</h2>
   </div>
   <div class="steps reveal">
     <div class="step">
       <div class="step-num">01</div>
-      <h3>You fill a short form</h3>
-      <p>Tell me about your business, your busiest DMs, and where leads keep slipping through.</p>
+      <h3>We talk about where leads are slipping</h3>
+      <p>No form to fill out alone — a short call where you walk me through your calendar, your team, and where deals are falling through. I'll ask the questions; you don't need to know the tech.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
-      <h3>I build the bot</h3>
-      <p>A tailored chatbot or voicebot, written in your voice and mapped to how your clients actually book.</p>
+      <h3>I build it around how you already sell</h3>
+      <p>A tailored follow-up and lead-capture system, written in your voice and mapped to how your clients actually book — not a generic bot bolted onto your business.</p>
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <h3>You plug it in and go</h3>
-      <p>Ready to connect to your existing pages and calendar — with support after launch, not just a handoff.</p>
+      <h3>It runs quietly in the background</h3>
+      <p>Connected to your existing calendar and CRM, live in weeks, not months — and I stay on afterward to fine-tune it, not disappear after handoff.</p>
     </div>
   </div>
   <div class="stack-note reveal">
-    <span class="label">built with</span>
+    <p style="font-size:13.5px; color:var(--silver); max-width:520px; margin-bottom:18px; line-height:1.6;">Built on tools like Voiceflow, Make, Zapier, and GoHighLevel — you'll never need to touch any of it.</p>
     <span class="chip">Voiceflow</span>
     <span class="chip">ManyChat</span>
     <span class="chip">Chatbase</span>
@@ -239,43 +269,57 @@
 </section>
 
 <section class="proof">
+  <div class="reveal" style="text-align:center; max-width:640px; margin:0 auto 44px;">
+    <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(22px,2.6vw,32px); line-height:1.35; color:var(--text);">Still figuring out if this actually works for a business like yours?</h2>
+  </div>
   <div class="proof-inner">
     <div class="proof-item"><div class="num">100%</div><div class="lbl">Job Success</div></div>
     <div class="proof-item"><div class="num">Top Rated</div><div class="lbl">Upwork Status</div></div>
-    <div class="proof-item"><div class="num">$9K+</div><div class="lbl">Client Earnings</div></div>
-    <div class="proof-item"><div class="num">22</div><div class="lbl">Projects Delivered</div></div>
+    <div class="proof-item"><div class="num">$9K+</div><div class="lbl">Client Results</div></div>
+    <div class="proof-item"><div class="num">22</div><div class="lbl">Systems Delivered</div></div>
   </div>
+</section>
+
+<section class="testimonial reveal">
+  <span class="kicker">still here after launch</span>
+  <blockquote>"She didn't just hand it over — she stuck around to fine-tune it as we grew. It genuinely feels like having someone on the team."</blockquote>
+  <div class="who">— Ada N.</div>
 </section>
 
 <section class="about" id="about">
   <div class="about-card reveal">
-    <span class="stamp">still here after launch</span>
-    <h4>Ada N.</h4>
-    <p>"She didn't just hand it over — she stuck around to fine-tune it as we grew. It genuinely feels like having someone on the team."</p>
+    <span class="stamp">quick facts</span>
+    <h4>Elizabeth</h4>
+    <div class="facts">
+      <div><span>Based in</span><b>Lagos, Nigeria</b></div>
+      <div><span>Focus</span><b>Coaches & advisory businesses</b></div>
+      <div><span>Avg. response</span><b>0–4 hours</b></div>
+      <div><span>Status</span><b>Top Rated · 100% Job Success</b></div>
+    </div>
   </div>
   <div class="about-text reveal">
-    <span class="kicker">the person behind the bot</span>
+    <span class="kicker">the person behind the system</span>
     <h2>I build systems the way I'd want to be treated as a client — closely, and without disappearing.</h2>
-    <p>I'm Elizabeth — an AI automation specialist based in Lagos, working with service-based businesses that are busy enough to need a bot and thoughtful enough to still care how it sounds.</p>
-    <p><strong>I don't just set things up and walk away.</strong> Most of my clients keep me on to monitor how conversations are going, fix what's not converting, and add new automations as their business grows.</p>
-    <p>If your DMs are piling up, your calls are going unanswered, or your booking process is more manual than it should be — that's exactly the kind of mess I like sorting out.</p>
+    <p>I'm Elizabeth, an AI automation specialist based in Lagos, working with coaches and other relationship-driven businesses who are busy enough to need a system — and thoughtful enough to still care how it sounds.</p>
+    <p><strong>I don't set things up and walk away.</strong> Most of my clients keep me on to monitor how conversations are landing, fix what's not converting, and add new automation as their business grows.</p>
+    <p>If leads are going cold while you're in session, no-shows are quietly costing you revenue, or your team can't keep the CRM straight — that's exactly the kind of mess I like sorting out.</p>
     <a href="about.html" class="btn-ghost">more about me →</a>
   </div>
 </section>
 
 <section class="cta" id="contact">
-  <span class="kicker">let's build yours</span>
-  <h2>Ready to let a bot hold the front desk?</h2>
+  <span class="kicker">let's talk</span>
+  <h2>Ready to stop losing deals to slow follow-up?</h2>
   <p>Tell me a bit about your business and where things are slipping — I'll reply within a few hours.</p>
   <div class="cta-buttons">
-    <a class="btn" href="mailto:olawumie26@gmail.com">Get a Custom Bot Now</a>
-    <a class="btn-outline" href="mailto:olawumie26@gmail.com">Book a Consultation</a>
+    <a class="btn" href="mailto:olawumie26@gmail.com">Book a Consultation</a>
+    <a class="btn-outline" href="mailto:olawumie26@gmail.com">Ask a Question First</a>
   </div>
 </section>
 
 <footer>
   <div class="brand">Olawumi Elizabeth</div>
-  <div class="meta">Chatbot & Voicebot Developer · Lagos, Nigeria</div>
+  <div class="meta">AI Automation for Coaches · Lagos, Nigeria</div>
   <a class="mail" href="mailto:olawumie26@gmail.com">olawumie26@gmail.com</a>
 </footer>
 
@@ -288,6 +332,17 @@
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
   }, {threshold:.15});
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
 </script>
 
 </body>
